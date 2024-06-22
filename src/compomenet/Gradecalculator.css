@@ -2,10 +2,9 @@ body {
   font-family: Arial, sans-serif;
   background: linear-gradient(45deg,#528f65,#5c86c2);
   margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
+ 
+  
   height: 100vh;
 }
 
@@ -36,6 +35,12 @@ h2 {
   margin-bottom: 20px;
   
 }
+.input-row3{
+  display: flex;
+  justify-content:  center;
+  align-items: center;
+  gap: 1rem;
+}
 
 .input-container {
   width: 48%;
@@ -48,6 +53,15 @@ h2 {
 
 .input-group {
   margin-bottom: 10px;
+}
+.input-group2{
+  margin-bottom:10px;
+  display: flex;
+  justify-content: center;
+  
+}
+.max-input{
+  width:300px;
 }
 
 input[type="number"] {
@@ -65,18 +79,20 @@ input[type="number"] {
 .button-row {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+ 
+  
+  
   margin-bottom: 20px;
 }
 
 button {
   width: fit-content;
-  padding: 5px;
+  padding: 15px;
   font-size: 15px;
   background: rgb(214, 136, 226);
   color:#0c3255;
   border: none;
-  border-radius: 100%;
+  border-radius: 20px;
   cursor: pointer;
   transition: all ease-in 0.3s;
   margin-right: 10px;

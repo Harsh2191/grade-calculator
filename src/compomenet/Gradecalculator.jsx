@@ -11,6 +11,9 @@ function GradeCalculator() {
   const [grade, setGrade] = useState('');
   const [maxValues, setMaxValues] = useState({ ia1: 50, ia2: 50, ia3: 50, assignment: 20, quiz: 30 });
   const [totalMarksMax, setTotalMarksMax] = useState(50); 
+  const [cieweihtage, setCieWeihtage] = useState('60');
+  const [aatweihtage, setAatWeihtage] = useState('20');
+  const [quizweihtage, setQuizweihtage] = useState('20');
 
   const calculateGrade = () => {
     if (
@@ -23,11 +26,15 @@ function GradeCalculator() {
       alert('One or more input values exceed their maximum values.');
       return;
     }
+    if(parseFloat(cieweihtage)+parseFloat(aatweihtage)+parseFloat(quizweihtage)>100){
+      alert('total weightage should be under 100');
+      return;
+    }
 
 
-    const totalIA = (parseFloat(ia1) + parseFloat(ia2) + parseFloat(ia3)) * (totalMarksMax*0.6/ (maxValues.ia1 + maxValues.ia2 + maxValues.ia3));
-    const totalAssignment = parseFloat(assignment) * ( totalMarksMax*0.2/ maxValues.assignment);
-    const totalQuiz = parseFloat(quiz) * (totalMarksMax*0.2 / maxValues.quiz);
+    const totalIA = (parseFloat(ia1) + parseFloat(ia2) + parseFloat(ia3)) * (totalMarksMax*(parseFloat(cieweihtage)/100)/ (maxValues.ia1 + maxValues.ia2 + maxValues.ia3));
+    const totalAssignment = parseFloat(assignment) * ( totalMarksMax*(parseFloat(aatweihtage)/100)/ maxValues.assignment);
+    const totalQuiz = parseFloat(quiz) * (totalMarksMax*(parseFloat(quizweihtage)/100)/ maxValues.quiz);
     const total = totalIA + totalAssignment + totalQuiz;
 
     
@@ -96,8 +103,6 @@ function GradeCalculator() {
           <label htmlFor="ia2">Internal Assessment 2 (0-{maxValues.ia2}):</label>
           <input type="number" id="ia2" min="0" max={maxValues.ia2} value={ia2} onChange={e => setIa2(e.target.value)} />
         </div>
-      </div>
-      <div className="input-row">
         <div className="input-container">
           <div className="input-group">
             <label htmlFor="maxIa3">Max Internal Assessment 3:</label>
@@ -106,6 +111,9 @@ function GradeCalculator() {
           <label htmlFor="ia3">Internal Assessment 3 (0-{maxValues.ia3}):</label>
           <input type="number" id="ia3" min="0" max={maxValues.ia3} value={ia3} onChange={e => setIa3(e.target.value)} />
         </div>
+      </div>
+      <div className="input-row">
+        
         <div className="input-container">
           <div className="input-group">
             <label htmlFor="maxAssignment">Max Assignment:</label>
@@ -114,8 +122,6 @@ function GradeCalculator() {
           <label htmlFor="assignment">Assignment (0-{maxValues.assignment}):</label>
           <input type="number" id="assignment" min="0" max={maxValues.assignment} value={assignment} onChange={e => setAssignment(e.target.value)} />
         </div>
-      </div>
-      <div className="input-row">
         <div className="input-container">
           <div className="input-group">
             <label htmlFor="maxQuiz">Max Quiz:</label>
@@ -124,27 +130,46 @@ function GradeCalculator() {
           <label htmlFor="quiz">Quiz (0-{maxValues.quiz}):</label>
           <input type="number" id="quiz" min="0" max={maxValues.quiz} value={quiz} onChange={e => setQuiz(e.target.value)} />
         </div>
-
-        <div className="input-container" style={{border:'none', boxShadow:'none'}}>
+        
+        <div className="input-container">
           <div className="input-group">
+            <label htmlFor="cie-wiehtage">cie-weightage</label>
+            <input type="number" id="cie-wiehtage" min="0" max="100"value={cieweihtage} onChange={e => setCieWeihtage(e.target.value)} />
+          </div>
+          <label htmlFor="assignment-weihtage">assignment-weightage</label>
+          <input type="number" id="assignment-weihtage" min="0" max="100" value={aatweihtage} onChange={e => setAatWeihtage(e.target.value)} />
+          <label htmlFor="quiz-weightage">Quiz-wieghtage</label>
+          <input type="number" id="quiz-weightage" min="0" max="100"value={quizweihtage} onChange={e => setQuizweihtage(e.target.value)} />
+        </div>
+      </div>
+      
+        
+
+       
+          <div className="input-group2">
+            <div className='max-input'>
             <label htmlFor="totalMarksMax">Total Marks Maximum:</label>
             <input type="number" id="totalMarksMax" min="0" value={totalMarksMax} onChange={handleTotalMarksMaxChange} />
+            </div>
           </div>
+          <div className='input-row3'>
           <div className="button-row">
         <button onClick={calculateGrade}>Calculate</button>
         <button onClick={clearInputs}>Clear</button>
-        <h3 className="output" id="output">Total Marks: {totalMarks}</h3>
+        </div>
+        <div>
+      <h3 className="output" id="output">Total Marks: {totalMarks}</h3>
       <h3 className="output" id="grade">Grade: {grade}</h3>
       </div>
-        </div>
-        
-
       </div>
       
+      
+      
+        
+
+    
+      
        
-      
-      
-      
     </div>
   );
 }
