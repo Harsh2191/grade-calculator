@@ -26,8 +26,8 @@ function GradeCalculator() {
       alert('One or more input values exceed their maximum values.');
       return;
     }
-    if(parseFloat(cieweihtage)+parseFloat(aatweihtage)+parseFloat(quizweihtage)>100){
-      alert('total weightage should be under 100');
+    if(parseFloat(cieweihtage)+parseFloat(aatweihtage)+parseFloat(quizweihtage)>100 || parseFloat(cieweihtage)+parseFloat(aatweihtage)+parseFloat(quizweihtage)<100 ){
+      alert('total weightage should be equal to 100');
       return;
     }
 
@@ -162,12 +162,6 @@ function GradeCalculator() {
       <h3 className="output" id="grade">Grade: {grade}</h3>
       </div>
       </div>
-      
-      
-      
-        
-
-    
       
        
     </div>
