@@ -34,6 +34,7 @@ h2 {
   justify-content: space-between;
   margin-bottom: 20px;
   
+  
 }
 .input-row3{
   display: flex;
@@ -115,6 +116,15 @@ button:hover {
   }
   .button-row{
     flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .input-row{
+    flex-wrap:wrap ;
+
+  }
+  .input-container{
+    width: fit-content;
+    margin-bottom: 15px;
   }
 
   
